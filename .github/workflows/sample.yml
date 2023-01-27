@@ -27,9 +27,9 @@ jobs:
 
       - name: Write release version (deprecated)
         id: version_check_deprecated
-        run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=version_deprecated::${GITHUB_REF/refs\/tags\//}
       - name: Read release version (deprecated)
-        run: echo "Version Check Deprecated 👉 ${{ steps.version_check_deprecated.outputs.version }}"
+        run: echo "Version Check Deprecated 👉 ${{ steps.version_check_deprecated.outputs.version_deprecated }}"
 
       - name: Write release version
         id: version_check
