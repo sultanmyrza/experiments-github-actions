@@ -1,0 +1,27 @@
+name: EXPERIMENT
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Write release version (deprecated)
+      id: version_check_deprecated
+      run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//}
+    - name: Read release version (deprecated)
+      run: echo "Version Check Deprecated 👉 ${{ steps.version_check_deprecated.outputs.version }}"
+      
+    - name: Write release version
+      id: version_check
+      run: echo "version_new=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
+    - name: Read release version 
+      run: echo "Version Check 👉 ${{ steps.version_check.outputs.version }}"
+      
