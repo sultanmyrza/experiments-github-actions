@@ -33,7 +33,7 @@ jobs:
 
       - name: Write release version
         id: version_check
-        run: echo "version_new=${GITHUB_REF/refs\/tags\//}" >> $env:GITHUB_OUTPUT
+        run: echo "version_new=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
       - name: Read release version 
-        run: echo "Version Check 👉 ${{ steps.version_check.outputs.version }}"
+        run: echo "Version Check 👉 ${{ steps.version_check.outputs.version_new }}"
      
